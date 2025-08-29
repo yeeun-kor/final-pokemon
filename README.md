@@ -7,58 +7,47 @@
 
 ---
 
-## 🚀 프로젝트 개요
+## 1. 페이지 설정
 
-- 개발 기간: 2025.08.29 -
-- 목표: 리액트 최적화, 상태 관리, 라우팅, UI 구성 능력을 종합적으로 학습
-- 특징: SPA(Single Page Application) 기반, 코드 스플리팅 적용, 상태 관리 고도화
-
----
-
-## 🎯 주요 기능
-
-- 포켓몬 카드 리스트 (이름/이미지)
-- 상세 페이지 (포켓몬 설명/스탯)
-- 검색 기능 (이름 기반 검색)
-- 찜 목록 관리 (즐겨찾기 추가/삭제)
-- 동적 로딩(React.lazy, Suspense)으로 초기 렌더링 성능 개선
-
----
-
-## ⚡ 최적화 포인트
-
----
-
-## 📂 폴더 구조
-
-```bash
-src/
- ├── assets/               # 이미지, 폰트, 전역 스타일
- ├── components/           # 재사용 가능한 공용 컴포넌트
- │    ├── Card/            # 포켓몬 카드 컴포넌트
- │    ├── Layout/          # Header, Footer, Navigation
- │    └── UI/              # Button, Modal, Loader 등
- ├── pages/                # 페이지 단위 컴포넌트
- │    ├── Main/            # 메인 (포켓몬 리스트)
- │    ├── Detail/          # 상세 페이지
- │    ├── Search/          # 검색 페이지
- │    └── Favorites/       # 찜 목록
- ├── RTK/                  # Redux Toolkit 관련
- │    ├── slices/          # 포켓몬 데이터 슬라이스
- │    └── store.js         # 전역 스토어 설정
- ├── services/             # API 호출 함수 (fetch, axios 등)
- ├── hooks/                # 커스텀 훅
- ├── utils/                # 공용 유틸 함수
- ├── App.jsx               # 라우팅 및 전체 구조
- └── main.jsx              # 진입점
-
+```jsx
+//main.jsx
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
 ```
 
----
+### 1-1. Router설정 (페이지 주소창 설정 ) & main 시맨틱 사용
 
-## 🛠 기술 스택
+```jsx
+//App.jsx
+<>
+  <h1 className="text-[40px] text-center">포켓몬 도감</h1>
+  <Routes>
+    <Route path={"/"} element={<Main></Main>}></Route>
+    <Route path={"/detail/:pokemonId"} element={<Detail></Detail>}></Route>
+    <Route path={"/search/:content"} element={<Search></Search>}></Route>
+</>
+```
 
-- `Frontend`: React, Vite, Tailwind CSS
-- `State` Management: Redux Toolkit (RTK)
-- `Routing`: React Router DOM
-- `API`:[PokéAPI](https://pokeapi.co/docs/v2#pokemon)
+- 주소창에 path 경로값으로 들어가면, 컴포넌트가 열린다
+- 이것에 맞는 `link` 페이지 연결 할 것,.
+
+### 1-2. 링크 페이지 연결 ( nav시맨틱 사용 )
+
+```jsx
+//App.jsx
+<>
+  <nav className=" flex gap-3 justify-center">
+    <Link to={"/"}>메인페이지</Link>
+    <Link to={"detail"}>상세정보</Link>
+    <Link to={"search"}>검색</Link>
+    <Link to={"favorite"}>찜목록</Link>
+  </nav>
+</>
+```
+
+## 2. 메인페이지
+
+## 3. 디테일 페이지

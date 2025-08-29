@@ -12,10 +12,13 @@
     "format": "prettier --cache --write ."
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.8.2",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
@@ -31,7 +34,8 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
-    "prettier": "^3.6.2",
+    "prettier": "3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "vite": "^7.1.2"
   }
 }
